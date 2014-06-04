@@ -1,0 +1,234 @@
+Downloading the 2012 IPEDS data
+===============================
+
+2012 IPEDS (final release) data were downloaded from the IPEDS data center website
+
+[http://nces.ed.gov/ipeds/datacenter/CDSPreview.aspx](http://nces.ed.gov/ipeds/datacenter/CDSPreview.aspx)
+
+on June 3, 2014 using the 380 institutions in Minnesota, Wisconsin, Illinois, Indiana, Michigan, and Ohio found in the file
+
+`C:\research\IPEDS\data\DC_InstGroup_62232_upper_midwest.uid`
+
+Here are the download instructions:
+
+1. [http://nces.ed.gov/ipeds/datacenter/Default.aspx](http://nces.ed.gov/ipeds/datacenter/Default.aspx)
+2. Click "Download custom data files"
+3. Select "Use final release data" (default) and click "Continue"
+4. Select institutions by clicking the "Uploading a file" link.
+5. Login in.
+6. Upload the `DC_InstGroup_62232_upper_midwest.uid` file and click "Submit".
+7. In the "Select Variables" tab, click on one of the ten categories of variables.  
+8. Click to open all of the subcategories and "select all variables" within each subcategory.
+9. When finished with a category, click the "Continue" button near the top of the page.
+10. On the results tab, do not impute data, and click the CSV link to get a zip file with CSV data and an HTML codebook.
+11. Click "Start Over" and repeat this process on another of the ten categories.
+
+I saved the files in `data/2012/raw/nn_descriptive_name.csv` and similarly for the html codebook files.
+
+Instructions for how to use the IPEDS datacenter can be found at [https://nces.ed.gov/ipeds/datacenter/IPEDSManual.pdf](https://nces.ed.gov/ipeds/datacenter/IPEDSManual.pdf)
+
+----
+
+Processing the 2012 IPEDS Raw Data into Analytic Data
+=====================================================
+
+Eventually, this script will load the raw 2012 IPEDS data and process it into a tidy data set suitable for analysis.  Right now, it just loads the data files I downloaded and prints out some information.
+
+
+Category 1: Frequently used derived variables
+---------------------------------------------
+
+```{r}
+df1 <- read.csv("2012/raw/01_Frequently_used_derived_variables.csv")
+dim(df1)
+names(df1)
+str(df1)
+```
+
+
+
+Category 2: Institutional characteristics
+---------------------------------------------
+
+```{r}
+df2 <- read.csv("2012/raw/02_Institutional_characteristics.csv")
+dim(df2)
+names(df2)
+str(df2)
+```
+
+
+Category 3: Enrollments
+---------------------------------------------
+
+```{r}
+df3_1 <- read.csv("2012/raw/03_Enrollments_1.csv")
+dim(df3_1)
+names(df3_1)
+#str(df3_1)
+
+df3_2 <- read.csv("2012/raw/03_Enrollments_2.csv")
+dim(df3_2)
+names(df3_2)
+#str(df3_2)
+
+df3_3 <- read.csv("2012/raw/03_Enrollments_3.csv")
+dim(df3_3)
+names(df3_3)
+#str(df3_3)
+
+df3_4 <- read.csv("2012/raw/03_Enrollments_4.csv")
+dim(df3_4)
+names(df3_4)
+#str(df3_4)
+
+df3_5 <- read.csv("2012/raw/03_Enrollments_5.csv")
+dim(df3_5)
+names(df3_5)
+#str(df3_5)
+
+df3_6 <- read.csv("2012/raw/03_Enrollments_6.csv")
+dim(df3_6)
+names(df3_6)
+#str(df3_6)
+
+df3_7 <- read.csv("2012/raw/03_Enrollments_7.csv")
+dim(df3_7)
+names(df3_7)
+#str(df3_7)
+
+df3_8 <- read.csv("2012/raw/03_Enrollments_8.csv")
+dim(df3_8)
+names(df3_8)
+#str(df3_8)
+
+```
+
+Category 4: Completions
+-----------------------
+
+```{r}
+df4_1 <- read.csv("2012/raw/04_Completions_1.csv")
+dim(df4_1)
+names(df4_1)
+#str(df4_1)
+
+df4_2 <- read.csv("2012/raw/04_Completions_2.csv")
+dim(df4_2)
+names(df4_2)
+#str(df4_2)
+
+df4_3 <- read.csv("2012/raw/04_Completions_3.csv")
+dim(df4_3)
+names(df4_3)
+#str(df4_3)
+
+df4_4 <- read.csv("2012/raw/04_Completions_4.csv")
+dim(df4_4)
+names(df4_4)
+#str(df4_4)
+
+```
+
+Category 5: Graduation rates
+----------------------------
+
+```{r}
+df5_1 <- read.csv("2012/raw/05_Graduation_rates_1.csv")
+dim(df5_1)
+names(df5_1)
+#str(df5_1)
+
+df5_2 <- read.csv("2012/raw/05_Graduation_rates_2.csv")
+dim(df5_2)
+names(df5_2)
+#str(df5_2)
+```
+
+
+Category 6: Student financial aid and net price
+-----------------------------------------------
+
+```{r}
+df6 <- read.csv("2012/raw/06_Student_financial_aid_and_net_price.csv")
+dim(df6)
+names(df6)
+#str(df6)
+```
+
+
+Category 7: Student financial aid and net price
+-----------------------------------------------
+
+```{r}
+df7 <- read.csv("2012/raw/07_Finance.csv")
+dim(df7)
+names(df7)
+#str(df7)
+```
+
+
+Category 8: Instructional staff / salaries
+------------------------------------------
+
+```{r}
+df8_1 <- read.csv("2012/raw/08_Instructional_staff_salaries_1.csv")
+dim(df8_1)
+names(df8_1)
+#str(df8_1)
+
+df8_2 <- read.csv("2012/raw/08_Instructional_staff_salaries_2.csv")
+dim(df8_2)
+names(df8_2)
+#str(df8_2)
+```
+
+
+Category 9: Fall staff
+------------------------------------------
+
+```{r}
+df9_1 <- read.csv("2012/raw/09_Fall_staff_1.csv")
+dim(df9_1)
+names(df9_1)
+#str(df9_1)
+
+df9_2 <- read.csv("2012/raw/09_Fall_staff_2.csv")
+dim(df9_2)
+names(df9_2)
+#str(df9_2)
+
+df9_3 <- read.csv("2012/raw/09_Fall_staff_3.csv")
+dim(df9_3)
+names(df9_3)
+#str(df9_3)
+
+df9_4 <- read.csv("2012/raw/09_Fall_staff_4.csv")
+dim(df9_4)
+names(df9_4)
+#str(df9_4)
+
+df9_5 <- read.csv("2012/raw/09_Fall_staff_5.csv")
+dim(df9_5)
+names(df9_5)
+#str(df9_5)
+
+```
+
+
+Category 10: Employees by assigned position
+-------------------------------------------
+
+```{r}
+df10_1 <- read.csv("2012/raw/10_Employees_by_assigned_position_1.csv")
+dim(df10_1)
+names(df10_1)
+str(df10_1)
+
+df10_2 <- read.csv("2012/raw/10_Employees_by_assigned_position_2.csv")
+dim(df10_2)
+names(df10_2)
+str(df10_2)
+```
+
+
